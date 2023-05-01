@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-	<%- include('./partials/head.ejs')%>
+	<%- include('./../partials/head.ejs')%>
 <body>	
-	<%- include('./partials/nav.ejs')%>
+	<%- include('./../partials/nav.ejs')%>
 
 	<div class="details content">
         <h2><%=blog.title%></h2>
         <div class="content">
             <p><%=blog.body%></p>
         </div>
-        <a class="delete" data-doc="<%=blog._id%>">delete</a>
+        <a class="delete" data-doc="<%=blog._id%>">
+            <img src="/test.svg" alt="delete">
+        </a>
     </div>
 
-	<%- include('./partials/footer.ejs')%>
+	<%- include('./../partials/footer.ejs')%>
     <script>
         const trash = document.querySelector('a.delete');
         trash.addEventListener('click',async (e)=>{
@@ -20,7 +22,6 @@
             const response = await fetch(endpoint, {method:'DELETE'});
             const data = await response.json();
             window.location.href = data.redirect
-            // console.log(await response.json());
         })
     </script>
 </body>
